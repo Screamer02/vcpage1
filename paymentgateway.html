@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Gateway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(to bottom, #56317a 10%,#3d99be 60%, #3ab5b0 80% );
+            object-fit: contain;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #8EC5FC;
+background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+
+            padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 36px; /* Rounded corners */
+    overflow: hidden; /* Ensure rounded corners clip properly */
+        }
+
+        img {
+    max-width: 132px;
+    height: 88px;
+    float: left; /* Image on the left side */
+    margin-right: 20px; /* Space between image and text */
+}
+
+        p {
+            font-style: italic;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            text-align: left;
+            color: #fff;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+        @media only screen and (max-width: 768px) {
+    main {
+        max-width: 90%;
+    }
+}
+#upiSection,
+        #cardSection {
+            display: none;
+        }
+
+       
+    
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Donation Gateway</h1>
+    </header>
+
+    <main>
+        <section>
+            <img src="/bmr.jpg" alt="People in Need">
+            <p>Thank you for considering a donation to help those in need.</p>
+        </section>
+
+        <section>
+            <h2>Choose Your Donation Amount (INR)</h2>
+            <label for="donationAmount">Amount:</label>
+            <input type="number" id="donationAmount" placeholder="Enter donation amount" required>
+        </section>
+
+        <section>
+            <h2>Choose Payment Method</h2>
+            <label for="paymentMethod">Select Payment Method:</label>
+            <select id="paymentMethod">
+                <option value="" disabled selected>Select Payment Method</option>
+                <option value="upi">UPI</option>
+                <option value="card">Credit/Debit Card</option>
+            </select>
+        </section>
+
+        <section id="upiSection">
+            <h2>UPI Payment</h2>
+            <label for="upiId">UPI ID:</label>
+            <input type="text" id="upiId" placeholder="Enter your UPI ID" required>
+        </section>
+
+        <section id="cardSection">
+            <h2>Credit/Debit Card Payment</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" placeholder="Enter your first name" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" placeholder="Enter your last name" required>
+
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" placeholder="Enter card number" required>
+
+            <label for="expiryDate">Expiry Date (MM/YY):</label>
+            <input type="text" id="expiryDate" placeholder="MM/YY" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" placeholder="Enter CVV" required>
+
+            <label for="cardHolderName">Name on Card:</label>
+            <input type="text" id="cardHolderName" placeholder="Enter name on card" required>
+        </section>
+
+        <button type="button" onclick="makeDonation()">Donate Now</button>
+      
+    </main>
+
+
+    <script>
+        // Toggle visibility of UPI and Card sections based on the selected payment method
+        document.getElementById('paymentMethod').addEventListener('change', function() {
+            var upiSection = document.getElementById('upiSection');
+            var cardSection = document.getElementById('cardSection');
+
+            if (this.value === 'upi') {
+                upiSection.style.display = 'block';
+                cardSection.style.display = 'none';
+            } else if (this.value === 'card') {
+                upiSection.style.display = 'none';
+                cardSection.style.display = 'block';
+            }
+        });
+
+        // Function to handle donation submission (placeholder function)
+        function makeDonation() {
+            alert('Donation submitted!');  // Placeholder, replace with actual submission logic
+          
+             // Navigate back to the previous page
+        window.history.back();
+
+// Pass the donor name to the previous page
+localStorage.setItem("donorName", donorName); // Store the donor name in local storage
+        }
+       
+       
+
+    </script>
+
+
+
+
+
+</body>
+</html>
