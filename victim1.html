@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraising Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient( 270.3deg,  rgba(84,212,228,1) 0.2%, rgba(68,36,164,1) 100% );;
+            color: #333;
+        }
+
+        
+
+        section {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cause {
+            width: 50%; /* Adjust the width of the cause container */
+            padding-right: 20px; /* Add some spacing between cause and image */
+        }
+        
+
+        .image-container {
+            max-width: 40%; /* Adjust the width of the image container */
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%; /* Make sure the image doesn't exceed its container */
+            height: auto;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);
+            box-shadow: 0 0 10px rgba(15, 14, 14, 0.1);
+            text-align: center;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .donor-info {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);
+            box-shadow: 0 0 10px rgba(42, 22, 22, 0.734);
+            text-align: center;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <section>
+        <div class="cause">
+            <h2>Support Ram's daughter Sita.</h2>
+            <p>Ram is a hardworking farmer who faces financial hardship due to a severe drought that destroys his crops, leaving his fields barren. This financial struggle makes it challenging for him to afford basic necessities, let alone the expensive medical treatment required for his daughter, Sita, suffers from a rare illness that requires urgent medical treatment costing Rs 3 lakhs. Despite his best efforts, Ram is unable to afford the treatment due to his financial situation, leading to a heart-wrenching dilemma of how to save his daughter's life.</p>
+        </div>
+
+        <div class="image-container">
+            <img id="selectedImage" src="1.jpg" alt="Fundraiser Image">
+        </div>
+    </section>
+
+    <form>
+        <button type=""><a style="color: white; text-decoration: none;" href = "paymentgateway.html">Donate Now</a></button>
+        <button type="button" onclick="shareLink()">Share Link</button>
+
+        <div class="donor-info">
+            <h3>Recent Donor:</h3>
+            <p>John Doe</p>
+
+            <h3>Top Donor:</h3>
+            <p>Jane Smith</p>
+
+            <h3>First Donor:</h3>
+            <p>Anonymous</p>
+        </div>
+    </form>
+
+    <section class="donor-names">
+        <h2>All Donors</h2>
+        <ul id="allDonorsList"></ul>
+    </section>
+ 
+    <script>
+        function shareLink() {
+            // Get the current page URL
+            var pageUrl = window.location.href;
+            
+            // Prompt the user with the URL
+            prompt("Share this link:", pageUrl);
+        }
+        //Function to add a new donor dynamically
+        function addDonor(name) {
+            var donorList = document.getElementById("allDonorsList");
+            var donorListItem = document.createElement("li");
+            donorListItem.textContent = name;
+            donorList.appendChild(donorListItem);
+        }
+      
+      // Function to handle receiving donor name from local storage
+      function receiveDonorName() {
+            var donorName = localStorage.getItem("donorName");
+            if (donorName) {
+                // Add the donor to the list of all donors
+                addDonor(donorName);
+            }
+            // Clear the donor name from local storage
+            localStorage.removeItem("donorName");
+        }
+            // Call receiveDonorName function when the page loads
+        window.onload = receiveDonorName;
+
+        
+       
+        /* // Function to update the content based on selected image
+        function updateContent(selectedImage) {
+            // Define the cause description and image based on the selected image
+            var causeDescriptions = {
+                "image1.jpg": "Description for cause related to image 1",
+                "image2.jpg": "Description for cause related to image 2",
+                // Add descriptions for other images as needed
+            };
+
+            // Update the cause description
+            var causeTitle = document.getElementById("causeTitle");
+            var causeDescription = document.getElementById("causeDescription");
+            causeDescription.textContent = causeDescriptions[selectedImage];
+
+            // Update the selected image
+            var selectedImageElement = document.getElementById("selectedImage");
+            selectedImageElement.src = selectedImage;
+        }
+
+        // Call the updateContent function with the selected image from the previous page
+        updateContent("fundraiser_image.jpg"); // Replace "fundraiser_image.jpg" with the selected image filename*/
+    </script>
+
+</body>
+</html>
